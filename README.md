@@ -1,4 +1,4 @@
-# Wispr Clone 🎙️
+# Wispr Clone
 
 A lightweight, powerful voice-to-text desktop app that mimics the core flow of Wispr. Built to demonstrate how modern web tech (React) can power native desktop experiences (Tauri) with state-of-the-art AI transcription (Deepgram).
 
@@ -10,13 +10,13 @@ I focused heavily on a clean architecture so you can easily rip out parts or ext
 
 ## Key Features
 
--   **⚡ Fast & Accurate**: Powered by Deepgram's streaming API, so words appear as you speak.
--   **🤫 Smart Silence**: Walks away when you do? The app auto-stops recording after 10 seconds of silence.
--   **⌨️ Native Feel**: Toggle recording globally with `Spacebar` (when focused) or click the big mic button.
--   **💎 Glassmorphism UI**: A sleek, modern interface that looks at home on your desktop.
--   **📋 Clipboard Ready**: One-click copy to get your text where it needs to go.
+-   **Fast & Accurate**: Powered by Deepgram's streaming API, so words appear as you speak.
+-   **Smart Silence**: Walks away when you do? The app auto-stops recording after 10 seconds of silence.
+-   **Native Feel**: Toggle recording globally with `Spacebar` (when focused) or click the big mic button.
+-   **Glassmorphism UI**: A sleek, modern interface that looks at home on your desktop.
+-   **Clipboard Ready**: One-click copy to get your text where it needs to go.
 
-## Under the Hood 🛠️
+## Under the Hood
 
 I broke the code down into distinct layers to keep the `App.tsx` file clean and focused purely on UI.
 
@@ -50,10 +50,3 @@ Instead of stuffing everything into the view, I wrote two custom hooks:
 
 3.  **Get a Key**:
     You'll need a free API Key from [Deepgram](https://console.deepgram.com). The app will ask for it the first time you try to record.
-
-## Future Plans
-
-Right now, it's a "Copy/Paste" workflow. The next logical step for a true Wispr clone would be implementing OS-level text injection (simulating keystrokes) so you can dictate directly into any window.
-
----
-*Built with ❤️ for the love of AI and efficient coding.*
