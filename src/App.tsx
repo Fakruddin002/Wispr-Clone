@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { Mic, Settings, Copy, Trash2 } from 'lucide-react';
 import { useAudioRecorder } from './hooks/useAudioRecorder';
@@ -15,7 +15,7 @@ function App() {
 
   const isRecording = isConnected;
 
-  const handleStop = (isError = false, msg = '') => {
+  const handleStop = () => {
     stopRecording();
     disconnect();
   };
@@ -23,7 +23,9 @@ function App() {
   // Audio Hook with Silence Callback
   const { startRecording, stopRecording, error: micError } = useAudioRecorder(() => {
     console.log('Silence Timeout Triggered');
-    handleStop(true, 'Silence Timeout (10s)');
+    setTimeoutTriggered(true);
+    setTimeout(() => setTimeoutTriggered(false), 3000);
+    handleStop();
   });
 
   // Keyboard Shortcuts
@@ -77,6 +79,11 @@ function App() {
 
       {/* Toast */}
       {showToast && <div className="toast">Copied to clipboard!</div>}
+      {timeoutTriggered && (
+        <div className="toast" style={{ borderColor: 'var(--warning-color)', background: 'rgba(255, 152, 0, 0.2)', color: '#ffe0b2' }}>
+          Recording stopped due to silence
+        </div>
+      )}
 
       {/* Mic Button */}
       <button
@@ -152,7 +159,7 @@ function App() {
 
       {/* Footer Info */}
       <div style={{ position: 'absolute', bottom: '2rem', opacity: 0.4, fontSize: '0.7rem' }}>
-        Powered by Deepgram Nova-2 • press space to record
+        Press space to record
       </div>
 
     </div>
